@@ -74,8 +74,11 @@ def get_all_LiveNode(scan_range):
     # print(scan_output)
     return parse_nbtscan_output(scan_output)
 
-def list_liveNode_to_json(nodes):
-    return json.dumps([node.__dict__ for node in nodes],indent=4, sort_keys=True)
+def list_liveNode_to_json(nodes,is_pretty=False):
+    if (is_pretty== True):
+        return json.dumps([node.__dict__ for node in nodes],indent=4, sort_keys=True)
+    else:
+        return json.dumps([node.__dict__ for node in nodes])
 
 def get_LiveNode_by_MAC(mac,scan_range):
     """Get all LiveNode with given device's MAC address in a network range
@@ -105,11 +108,11 @@ def get_LiveNode_by_IP(ip):
 
 nodes = get_all_LiveNode("192.168.0.14/26")
 print ("nodes:")
-print (list_liveNode_to_json(nodes))
+print (list_liveNode_to_json(nodes,True))
 
 mac_nodes = get_LiveNode_by_MAC("60f81daaa622","192.168.0.14/26")
 print ("mac_nodes:")
-print (list_liveNode_to_json(nodes))
+print (list_liveNode_to_json(mac_nodes))
 
 ip_node = get_LiveNode_by_IP("192.168.0.20")
 print("IP node:")
