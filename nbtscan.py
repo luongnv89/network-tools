@@ -75,6 +75,18 @@ def get_all_LiveNode(scan_range):
     return parse_nbtscan_output(scan_output)
 
 def list_liveNode_to_json(nodes,is_pretty=False):
+    """Print a list of LiveNode in JSON format
+    
+    Arguments:
+        nodes {LiveNode} -- List of LiveNode
+    
+    Keyword Arguments:
+        is_pretty {Boolean} -- True to have pretty JSON (default: {False})
+    
+    Returns:
+        JSON -- JSON format
+    """
+
     if (is_pretty== True):
         return json.dumps([node.__dict__ for node in nodes],indent=4, sort_keys=True)
     else:
