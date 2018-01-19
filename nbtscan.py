@@ -75,7 +75,7 @@ def get_all_LiveNode(scan_range):
     return parse_nbtscan_output(scan_output)
 
 def list_liveNode_to_json(nodes):
-    return json.dumps([node.__dict__ for node in nodes])
+    return json.dumps([node.__dict__ for node in nodes],indent=4, sort_keys=True)
 
 def get_LiveNode_by_MAC(mac,scan_range):
     """Get all LiveNode with given device's MAC address in a network range
